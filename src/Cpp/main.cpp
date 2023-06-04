@@ -114,10 +114,14 @@ int main([[maybe_unused]] int argc, char** argv)
     AsstStart(ptr);
 
     while (AsstRunning(ptr)) {
+        std::cout << "sample: before yield" << std::endl;
         std::this_thread::yield();
+        std::cout << "sample: after yield" << std::endl;
     }
 
+    std::cout << "sample: before stop" << std::endl;
     AsstStop(ptr);
+    std::cout << "sample: after stop" << std::endl;
     AsstDestroy(ptr);
     ptr = nullptr;
 
